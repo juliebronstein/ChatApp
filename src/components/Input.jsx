@@ -10,11 +10,11 @@ import {
   Timestamp,
   updateDoc,
 } from "firebase/firestore";
-import { db, storage } from "../firebase";
 import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { db, storage } from "../firebace";
 
-const Input = () => {
+const Input = () => { 
   const [text, setText] = useState("");
   const [img, setImg] = useState(null);
 

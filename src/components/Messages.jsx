@@ -1,7 +1,7 @@
 import { doc, onSnapshot } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
 import { ChatContext } from "../context/ChatContext";
-import { db } from "../firebase";
+import { db } from "../firebace";
 import Message from "./Message";
 
 const Messages = () => {
@@ -18,11 +18,11 @@ const Messages = () => {
     };
   }, [data.chatId]);
 
-  console.log(messages)
+  console.log("messages", messages)
 
   return (
     <div className="messages">
-      {messages.map((m) => (
+      {messages?.map((m) => (
         <Message message={m} key={m.id} />
       ))}
     </div>
