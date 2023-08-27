@@ -43,7 +43,8 @@ uploadTask.on(
           email,
           photoURL:downloadURL,
         }) 
-        //  updateProfile()
+        await setDoc(doc(db, "userChats", res.user.uid), {});
+        navigate('/')
       });
     }
   
@@ -77,7 +78,7 @@ uploadTask.on(
           {err && <span>Something went wrong</span>}
         </form>
         <p>
-          You do have an account? <Link to="/register">Login</Link>
+          You do have an account? <Link to="/login">Login</Link>
         </p>
       </div>
     </div>

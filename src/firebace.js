@@ -20,4 +20,4 @@ export const auth=getAuth();
 
 // Create a root reference
 export const storage = getStorage();
-export const db=getFirestore()
+export const db=getFirestore();
