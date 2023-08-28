@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from '../components/Sidebar';
 import Chat from '../components/Chat';
 
 const Home = () => {
-  return (
+   return (
     <div className='home'>
       <div className="container">
         <Sidebar/>

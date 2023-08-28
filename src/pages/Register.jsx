@@ -5,11 +5,48 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth , db, storage} from '../firebace'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore"; 
+import Swal from 'sweetalert2';
 
 const Register = () => {
   const [err, setErr] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+ const [isFirstRun, setIsFirstRun] = useState(true);
+  const refreshFunc=()=>{
+      if (isFirstRun) {
+        window.location.reload();
+        setIsFirstRun(false);
+      }
+        }
+//   const navHomeFunc=()=>{
+//   let timerInterval     
+// Swal.fire({
+//   title: 'Auto close alert!',
+//   html: 'I will close in <b></b> milliseconds.',
+//   timer: 2000,
+//   timerProgressBar: true,
+//   didOpen: () => {
+//     Swal.showLoading()
+//     const b = Swal.getHtmlContainer().querySelector('b')
+//     timerInterval = setInterval(() => {
+//       b.textContent = Swal.getTimerLeft()
+//       refreshFunc()
+//       navigate('/')
+//     }, 100)
+//   },
+//   willClose: () => {
+    
+//     clearInterval(timerInterval)
+//   }
+// }).then((result) => {
+//   /* Read more about handling dismissals below */
+//   if (result.dismiss === Swal.DismissReason.timer) {
+//     console.log('I was closed by the timer')
+//   }
+// })
+//   }
+
 
   const handleSubmit = async (e) => {
     
@@ -31,8 +68,6 @@ uploadTask.on(
   },   
     () => {
      getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-        console.log('File available at', downloadURL);
-        console.log(res.user)
         await updateProfile(res.user,{
           displayName,
           photoURL:downloadURL
@@ -44,6 +79,8 @@ uploadTask.on(
           photoURL:downloadURL,
         }) 
         await setDoc(doc(db, "userChats", res.user.uid), {});
+      //  navHomeFunc() 
+      refreshFunc()
         navigate('/')
       });
     }
@@ -60,7 +97,7 @@ uploadTask.on(
   return (
     <div className="formContainer">
       <div className="formWrapper">
-        <span className="logo">Lama Chat</span>
+        <span className="logo">Chat</span>
         <span className="title">Register</span>
         <form 
         onSubmit={handleSubmit}

@@ -17,7 +17,7 @@ const initialValues ={
     favorits:['']
 }
 const onSubmit = values=>{
-    console.log(values);
+    // console.log(values);
 }
 const validate = values=>{
     let errors = {}

@@ -25,7 +25,7 @@ const handleSearch= async()=>{
   
   try{
     const querySnapshot = await getDocs(q);
-    console.log("querySnapshot",querySnapshot)
+    // console.log("querySnapshot",querySnapshot)
   querySnapshot.forEach((doc) => {
     setUser(doc.data());
 

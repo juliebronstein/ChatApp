@@ -13,28 +13,32 @@ const Message = ({ message }) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   }, [message]);
 
-  return (
-    <div
-      ref={ref}
-      className={`message ${message.senderId === currentUser.uid && "owner"}`}
-    >
-      <div className="messageInfo">
-        <img
-          src={
-            message.senderId === currentUser.uid
-              ? currentUser.photoURL
-              : data.user.photoURL
-          }
-          alt=""
-        />
-        <span>just now</span>
+  try{
+    return (
+      <div
+        ref={ref}
+        className={`message ${message.senderId === currentUser.uid && "owner"}`}
+      >
+        <div className="messageInfo">
+          <img
+            src={
+              message.senderId === currentUser.uid
+                ? currentUser.photoURL
+                : data.user.photoURL
+            }
+            alt=""
+          />
+          <span>just now</span>
+        </div>
+        <div className="messageContent">
+          <p>{message.text}</p>
+          {message.img && <img src={message.img} alt="" />}
+        </div>
       </div>
-      <div className="messageContent">
-        <p>{message.text}</p>
-        {message.img && <img src={message.img} alt="" />}
-      </div>
-    </div>
-  );
+    );  
+  }catch(err){
+   return( <div>some thing is wrong </div>)
+  }
 };
 
 export default Message;

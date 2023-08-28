@@ -39,6 +39,7 @@ const App = () => {
           />
           <Route path="login" element={<NonLoggedInRoute><Login /></NonLoggedInRoute>} />
           <Route path="register" element={<NonLoggedInRoute><Register /></NonLoggedInRoute>} />
+          <Route path='*' element={<NonLoggedInRoute><Login /></NonLoggedInRoute>} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -13,15 +13,37 @@ import {
 import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { db, storage } from "../firebace";
+import Swal from "sweetalert2";
 
 const Input = () => { 
   const [text, setText] = useState("");
   const [img, setImg] = useState(null);
-
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
 
+
+  
+const handleKey=(e)=>{
+
+ 
+
+  e.code === "Enter" && handleSend();
+}
   const handleSend = async () => {
+  
+  if (data.chatId==='null'){ 
+       Swal.fire({
+      title: 'Please search and Select Your Friend',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      },
+      icon: 'warning',
+    })
+    return 0
+       }
     if (img) {
       const storageRef = ref(storage, uuid());
 
@@ -29,7 +51,7 @@ const Input = () => {
 
       uploadTask.on(
         (error) => {
-          //TODO:Handle Error
+        
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
@@ -78,12 +100,14 @@ const Input = () => {
       <input
         type="text"
         placeholder="Type something..."
+        onKeyDown={handleKey}
         onChange={(e) => setText(e.target.value)}
         value={text}
       />
       <div className="send">
         <img src={Attach} alt="" />
         <input
+        
           type="file"
           style={{ display: "none" }}
           id="file"

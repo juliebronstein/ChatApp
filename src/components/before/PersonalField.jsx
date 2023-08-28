@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Personalfield = ({field , form , meta})=>{
-    console.log(field , form , meta);
+    // console.log(field , form , meta);
     return (
         <>
             <input type="password" className="form-control" id="password" {...field}/>
