@@ -17,7 +17,8 @@ const Register = () => {
       if (isFirstRun) {
         // window.location.reload();
         // window.location.replace("https://samanta580.github.io/ChatApp")
-        window.location.replace(window.location.href)
+        const path=window.location.href
+        window.location.replace(path)
         setIsFirstRun(false);
       }
         }
