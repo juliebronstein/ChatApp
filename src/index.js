@@ -5,7 +5,6 @@ import App from "./App"
 import { AuthContextProvider } from './context/AuthContext';
 import { ChatContextProvider } from './context/ChatContext';
 
-
 const root = document.getElementById('root');
 
 ReactDOM.render(
@@ -20,11 +19,4 @@ ReactDOM.render(
 );
 
 
-// const root=ReactDOM.render(<App/>,document.getElementById('root'));
-// root.render(
-//     <AuthContextProvider>
-//         <React.StrictMode>
-//             <App/>
-//         </React.StrictMode>
-//     </AuthContextProvider>
-// )
+

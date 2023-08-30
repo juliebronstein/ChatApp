@@ -15,7 +15,8 @@ const Register = () => {
  const [isFirstRun, setIsFirstRun] = useState(true);
   const refreshFunc=()=>{
       if (isFirstRun) {
-        window.location.reload();
+        // window.location.reload();
+        window.location.replace('https://samanta580.github.io/ChatApp')
         setIsFirstRun(false);
       }
         }

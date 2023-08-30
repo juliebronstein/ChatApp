@@ -9,11 +9,11 @@ const Chats = () => {
   const { currentUser } = useContext(AuthContext);
   const {dispatch}  = useContext(ChatContext);
 const calCharMsg=(text)=>{
-    if(text==="")
+    if(typeof(text)==="undefined")
   return ""
   if(text.length>13)
     return text.slice(0, 10)+"..."
-
+console.log("text:",text)
 return text
 }
   useEffect(() => {

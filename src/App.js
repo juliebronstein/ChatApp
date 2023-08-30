@@ -5,7 +5,6 @@ import Home from './pages/Home';
 import { AuthContext } from './context/AuthContext';
 import './style.scss';
 import Login from './pages/Login';
-
 const App = () => {
   const { currentUser } = useContext(AuthContext);
 
