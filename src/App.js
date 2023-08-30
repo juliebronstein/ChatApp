@@ -6,6 +6,8 @@ import { AuthContext } from './context/AuthContext';
 import './style.scss';
 import Login from './pages/Login';
 const App = () => {
+  console.log("window.location.pathname:",window.location.pathname); //yields: "/js" (where snippets run)
+console.log("window.location.href:",window.location.href); 
   const { currentUser } = useContext(AuthContext);
 
   const ProtectedRoute = ({ children }) => {

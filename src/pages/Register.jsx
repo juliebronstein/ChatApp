@@ -16,7 +16,8 @@ const Register = () => {
   const refreshFunc=()=>{
       if (isFirstRun) {
         // window.location.reload();
-        window.location.replace('https://samanta580.github.io/ChatApp')
+        // window.location.replace("https://samanta580.github.io/ChatApp")
+        window.location.replace(window.location.href)
         setIsFirstRun(false);
       }
         }
